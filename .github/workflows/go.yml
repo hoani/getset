@@ -1,0 +1,31 @@
+name: Go
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+    
+    - name: Run Tests
+      run: go test -v -covermode=count -coverprofile=coverage.out
+      
+    - uses: jandelgado/gcov2lcov-action@v1.0.6
+    - uses: coverallsapp/github-action@v1.1.2
+      with:
+        github-token: ${{ secrets.github_token }}
+        path-to-lcov: coverage.lcov
+    
+        
+  
