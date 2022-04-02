@@ -1,5 +1,10 @@
+// A lightweight set implementation.
+//
+// Requires go 1.18 or higher.
 package getset
 
+// Set holds a set of comparable values (e.g. strings, integers, floats, simple structs, etc).
+// Typical collection syntax will work; for example you can `delete`, `len`, index with `[key]`, and `range` over the set.
 type Set[T comparable] map[T]struct{}
 
 // New creates a new set with the given items.
@@ -12,13 +17,13 @@ func New[T comparable](items ...T) Set[T] {
 	return Set[T](m)
 }
 
-// Has checks whether an item is in the given set.
+// Has checks if an item is included in the set.
 func (s Set[T]) Has(item T) bool {
 	_, has := s[item]
 	return has
 }
 
-// Insert adds another value to the set. If the value already exists, the set remains the same.
+// Insert adds another item to the set. If the value already exists, the set remains the same.
 func (s Set[T]) Insert(item T) {
 	s[item] = struct{}{}
 }

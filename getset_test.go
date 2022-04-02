@@ -110,6 +110,38 @@ func Test_Set_Custom(t *testing.T) {
 	}
 }
 
+func Test_Set_Range(t *testing.T) {
+	t.Run("integers", func(t *testing.T) {
+		set := New(1, 2, 3, 4, 5)
+		count := 0
+		for item := range set {
+			count++
+			assert.True(t, set.Has(item))
+		}
+		assert.Len(t, set, count)
+	})
+
+	t.Run("float", func(t *testing.T) {
+		set := New(1.5, 2.25, 3.75, 4.7, 5.9)
+		count := 0
+		for item := range set {
+			count++
+			assert.True(t, set.Has(item))
+		}
+		assert.Len(t, set, count)
+	})
+
+	t.Run("string", func(t *testing.T) {
+		set := New("a", "b", "c", "d", "e")
+		count := 0
+		for item := range set {
+			count++
+			assert.True(t, set.Has(item))
+		}
+		assert.Len(t, set, count)
+	})
+}
+
 func Test_Set_Length(t *testing.T) {
 	type customType struct {
 		i int
