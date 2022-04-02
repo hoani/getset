@@ -22,3 +22,12 @@ func (s Set[T]) Has(item T) bool {
 func (s Set[T]) Insert(item T) {
 	s[item] = struct{}{}
 }
+
+// ToArray returns a slice of all items in the set.
+func (s Set[T]) ToArray() []T {
+	result := make([]T, 0, len(s))
+	for item := range s {
+		result = append(result, item)
+	}
+	return result
+}

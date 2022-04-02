@@ -281,3 +281,31 @@ func Test_Set_Insert_Integer(t *testing.T) {
 		})
 	}
 }
+
+func Test_Set_Slice_Int(t *testing.T) {
+	testCases := []struct {
+		name  string
+		items []int
+	}{
+		{
+			name:  "empty",
+			items: []int{},
+		},
+		{
+			name:  "single",
+			items: []int{5},
+		},
+		{
+			name:  "many",
+			items: []int{5, -5, 10, -10, 15, -15},
+		},
+	}
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			set := New(tc.items...)
+
+			result := set.ToArray()
+			assert.ElementsMatch(t, tc.items, result)
+		})
+	}
+}
