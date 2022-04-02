@@ -1,6 +1,10 @@
 [![Build Status](https://github.com/hoani/getset/workflows/Go/badge.svg)](https://github.com/hoani/getset/actions?workflow=Go)
 [![Coverage Status](https://coveralls.io/repos/github/hoani/getset/badge.svg?branch=master)](https://coveralls.io/github/hoani/getset?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/hoani/getset)](https://goreportcard.com/report/github.com/hoani/getset) 
+[![Go Report Card](https://goreportcard.com/badge/github.com/hoani/getset)](https://goreportcard.com/report/github.com/hoani/getset)
+
+```sh
+go get github.com/hoani/getset@latest
+```
 
 ## getset
 
@@ -26,3 +30,7 @@ strSet.ToArray() // []string{"a", "c", "d"}
 ```
 
 And that's it!
+
+## License
+
+MIT
